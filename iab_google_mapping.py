@@ -12,7 +12,7 @@ googleProvidersUrl = 'https://storage.googleapis.com/adx-rtb-dictionaries/provid
 outputFilePath = 'iab_google_mapping.csv'
 
 def clear_url(origin_url):
-  return tldextract.extract(origin_url).registered_domain
+  return '.'.join(part for part in tldextract.extract(origin_url) if part).replace('www.','')
 
 # download and prepare IAB vendors
 with urllib.request.urlopen(iabVendorListUrl) as response:
